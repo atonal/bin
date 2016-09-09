@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# != 1 ] ; then
+    echo "Give a binary input"
+    exit
+fi
+
+bc <<EOF
+ibase=2;
+obase=10;
+"bin: "; $1;
+obase=1010; /* 10 */
+"dec: "; $1;
+obase=10000; /* 16 */
+"hex: "; $1;
+EOF

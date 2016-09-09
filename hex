@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ $# != 1 ] ; then
+    echo "Give a hex input"
+    exit
+fi
+
+HEXUPPER=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+
+bc <<EOF
+ibase=16;
+obase=2;
+"bin: "; $HEXUPPER;
+obase=A; /* 10 */
+"dec: "; $HEXUPPER;
+obase=10; /* 16 */
+"hex: "; $HEXUPPER;
+EOF

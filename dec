@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# != 1 ] ; then
+    echo "Give a decimal input"
+    exit
+fi
+
+bc <<EOF
+ibase=10;
+obase=2;
+"bin: "; $1;
+obase=10;
+"dec: "; $1;
+obase=16;
+"hex: "; $1;
+EOF
