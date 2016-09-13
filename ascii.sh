@@ -2,11 +2,16 @@
 
 set -u
 
+if [ $# -lt 2 ] ; then
+    echo "$0 <image.jpg> <code.c> [height]"
+    exit
+fi
+
 command -v jp2a >/dev/null 2>&1 || { echo >&2 "Requires jp2a."; exit 1; }
 
 IMAGE=$1
 CODE=$2
-HEIGHT=$3
+HEIGHT=${3:-40}
 
 # some character that does not occur (much) in CODE
 FILLER="'"
